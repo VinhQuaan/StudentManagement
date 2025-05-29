@@ -89,15 +89,11 @@
                     <a href="#about">Enrollment</a>
                     <a href="#about">Payment</a>
                 </div>
-
-                <div class="col-md-9">
-                    <div class="content">
-                        @yield('content')
-                    </div>
-                </div>
+            </div>
+            <div class="col-md-9">
+                @yield('content')
             </div>
         </div>
-
     </div>
 </body>
 </html>
