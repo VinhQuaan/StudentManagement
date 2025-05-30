@@ -43,7 +43,7 @@
                                 <form method="POST" action="{{ url('/students/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm('Are you sure you want to delete this student?')">
+                                    <button type="submit" class="btn btn-danger" title="Delete Student" onclick="return confirm('Are you sure you want to delete this student?')">
                                         <i class="fa fa-trash"></i> Delete
                                     </button>
                                 </form>
