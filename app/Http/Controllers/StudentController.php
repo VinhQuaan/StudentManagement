@@ -31,7 +31,7 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) : RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $input = $request->all();
         Student::create($input);
@@ -41,25 +41,30 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): View
     {
-        //
+        $students = Student::find($id);
+        return view('students.show')->with('students', $students);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        //
+        $students = Student::find($id);
+        return view('students.edit')->with('students', $students);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $student = Student::find($id);
+        $input = $request->all();
+        $student->update($input);
+        return redirect('students')->with('flash_message', 'Student Updated!');
     }
 
     /**
@@ -67,6 +72,7 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Student::destroy($id);
+        return redirect('students')->with('flash_message', 'Student Deleted!');
     }
 }
