@@ -59,7 +59,7 @@ It features a clean and user-friendly interface with full CRUD functionality.
    php artisan serve
    ```
 
-7. Open your browser and visit `http://localhost:8000/students`
+7. Open your browser and click on the link on the terminal
 
 ## Contact
 
