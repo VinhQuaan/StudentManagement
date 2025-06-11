@@ -583,6 +583,12 @@ body {
     </a>
 </li>
 <li class="sidebar-dropdown">
+    <a href="{{ url('/batches') }}">
+        <i class="fa fa-book"></i>
+        <span>Batches</span>
+    </a>
+</li>
+<li class="sidebar-dropdown">
     <a href="#enrollment">
         <i class="fa fa-clipboard-list"></i>
         <span>Enrollment</span>
