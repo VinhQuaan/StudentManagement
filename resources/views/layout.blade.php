@@ -520,17 +520,21 @@ body {
                     </div>
                 </div>
                 <div class="sidebar-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" alt="User picture">
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name">Jhon <strong>Smith</strong></span>
-                        <span class="user-role">Administrator</span>
-                        <span class="user-status">
-                            <i class="fa fa-circle"></i><span>Online</span>
-                        </span>
-                    </div>
-                </div>
+    <div class="user-pic">
+        <!-- Thay đổi hình ảnh đại diện của người dùng -->
+        <img class="img-responsive img-rounded" src="https://via.placeholder.com/150" alt="User picture">
+    </div>
+    <div class="user-info">
+        <!-- Thay tên người dùng và vai trò -->
+        <span class="user-name">Admin <strong>Manager</strong></span>
+        <span class="user-role">Manager</span>
+        <span class="user-status">
+            <!-- Trạng thái người dùng, có thể thay đổi từ "Online" thành trạng thái khác như "Inactive" -->
+            <i class="fa fa-circle"></i><span>Active</span>
+        </span>
+    </div>
+</div>
+
 
                 <div class="sidebar-search">
                     <div>
@@ -566,13 +570,13 @@ body {
 </li>
 <li class="sidebar-dropdown">
     <a href="{{ url('/students') }}">
-        <i class="fa fa-user-graduate"></i>
+        <i class="fas fa-users"></i>
         <span>Student</span>
     </a>
 </li>
 <li class="sidebar-dropdown">
     <a href="{{ url('/teachers') }}">
-        <i class="fa fa-chalkboard-teacher"></i>
+        <i class="	far fa-id-card"></i>
         <span>Teacher</span>
     </a>
 </li>
@@ -584,7 +588,7 @@ body {
 </li>
 <li class="sidebar-dropdown">
     <a href="#enrollment">
-        <i class="fa fa-clipboard-list"></i>
+        <i class="fas fa-school	"></i>
         <span>Enrollment</span>
     </a>
 </li>
