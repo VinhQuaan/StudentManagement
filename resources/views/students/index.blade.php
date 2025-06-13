@@ -16,38 +16,46 @@
                 <table class="table table-hover table-dark">
                     <thead class="thead-light">
                         <tr>
-                            <th>#</th>
+                             <th>#</th>
                             <th>Name</th>
                             <th>Address</th>
                             <th>Mobile</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
                             <th>Actions</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($students as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->address }}</td>
-                                <td>{{ $item->mobile }}</td>
-                                <td>
-                                    <a href="{{ url('/students/' . $item->id) }}" class="btn btn-outline-info btn-sm mb-1">
-                                        <i class="fa fa-eye"></i> View
-                                    </a>
-                                    <a href="{{ url('/students/' . $item->id . '/edit') }}" class="btn btn-outline-warning btn-sm mb-1">
-                                        <i class="fa fa-edit"></i> Edit
-                                    </a>
-                                    <form method="POST" action="{{ url('/students/' . $item->id) }}" style="display:inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this student?')">
-                                            <i class="fa fa-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
+                    @foreach($students as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->address }}</td>
+                            <td>{{ $item->mobile }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->gender }}</td>
+                            <td>{{ $item->dob }}</td>
+                            <td>
+                                <a href="{{ url('/students/' . $item->id) }}" class="btn btn-outline-info btn-sm mb-1">
+                                    <i class="fa fa-eye"></i> View
+                                </a>
+                                <a href="{{ url('/students/' . $item->id . '/edit') }}" class="btn btn-outline-warning btn-sm mb-1">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                                <form method="POST" action="{{ url('/students/' . $item->id) }}" style="display:inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure?')">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
+
                 </table>
             </div>
         </div>
