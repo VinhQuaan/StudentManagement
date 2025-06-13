@@ -104,7 +104,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .page-wrapper.toggled .page-content {
-    padding-left: 300px;
+    padding-left: 250px;
   }
 }
 /*----------------show sidebar button----------------*/
@@ -373,7 +373,7 @@ body {
   display: inline-block;
   width: 100%;
   padding-left: 0px;
-  padding-top: 20px;
+  
 }
 
 .page-wrapper .page-content > div {
