@@ -61,9 +61,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td colspan="9" class="text-center text-muted">No teachers found.</td>
-                            </tr>
+                            <tr><td colspan="9" class="text-center text-muted">No teachers found.</td></tr>
                         @endforelse
                     </tbody>
                 </table>
