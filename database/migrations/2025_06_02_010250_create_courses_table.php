@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('syllabus');
-            $table->string('duration');
+            $table->string('code')->unique();
+            $table->text('description')->nullable();
+            $table->integer('duration')->nullable(); // weeks
+            $table->integer('credit')->nullable();
 
             $table->timestamps();
         });
