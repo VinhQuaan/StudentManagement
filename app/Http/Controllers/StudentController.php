@@ -9,6 +9,20 @@ use Illuminate\Http\RedirectResponse;
 
 class StudentController extends Controller
 {
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    function __construct()
+    {
+         $this->middleware('permission:student-list|student-create|student-edit|student-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:student-create', ['only' => ['create','store']]);
+         $this->middleware('permission:student-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:student-delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
