@@ -33,7 +33,7 @@
                     <div class="user-pic">
                         @if (Auth::check())
                             <img class="img-responsive img-rounded" 
-                                src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('storage/avatars/default.png') }}" 
+                                src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('storage/app/avatars/default.png') }}" 
                                 alt="User picture">
                         @else
                             <img class="img-responsive img-rounded" 
@@ -93,9 +93,12 @@
                         @can('role-list')
                         <li><a href="{{ route('roles.index') }}"><i class="fa fa-user-tag"></i> Roles</a></li>
                         @endcan
-                        @can('student-list')
-                        <li><a href="{{ route('students.index') }}"><i class="fa fa-box"></i> Students</a></li>
-                        @endcan
+                        @role('student')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('student.courses.index') }}">Khóa học</a>
+                            </li>
+                        @endrole
+
 
                     </ul>
                 </div>

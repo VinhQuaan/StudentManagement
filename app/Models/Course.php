@@ -11,5 +11,16 @@ class Course extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name', 'code', 'description', 'duration', 'credit'];
 
+    public function teacher() {
+        return $this->belongsTo(User::class, 'teacher_id');
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'course_user')->whereHas('roles', function ($q) {
+            $q->where('name', 'student');
+        });
+    }
+
     use HasFactory;
 }
