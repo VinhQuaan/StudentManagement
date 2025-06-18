@@ -20,6 +20,9 @@ return new class extends Migration
             $table->integer('duration')->nullable(); // weeks
             $table->integer('credit')->nullable();
 
+            $table->unsignedBigInteger('teacher_id');
+            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

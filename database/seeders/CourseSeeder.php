@@ -2,18 +2,39 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 use App\Models\Course;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 class CourseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Course::factory()->count(50)->create();
+        // Lấy danh sách giáo viên
+        $teachers = User::role('teacher')->get();
+
+        // Nếu chưa có giáo viên nào thì dừng seed
+        if ($teachers->isEmpty()) {
+            $this->command->warn('⚠️ Không có teacher nào trong hệ thống. Hãy seed teacher trước.');
+            return;
+        }
+
+        $courseNames = [
+            'Database Systems', 'Operating Systems', 'Machine Learning',
+            'Web Development', 'Mobile App Development', 'Computer Networks',
+            'Artificial Intelligence', 'Data Structures', 'Software Engineering'
+        ];
+
+        foreach ($courseNames as $courseName) {
+            Course::create([
+                'name' => $courseName,
+                'code' => 'CSE' . rand(100, 999),
+                'description' => 'Mô tả cho khóa học ' . $courseName,
+                'duration' => rand(4, 16),
+                'credit' => rand(2, 5),
+                'teacher_id' => $teachers->random()->id, // ⚠️ Gán teacher_id tại đây
+            ]);
+        }
     }
 }

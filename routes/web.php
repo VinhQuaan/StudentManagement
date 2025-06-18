@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::get('/', function () {
 
 Route::resource('/students', StudentController::class);
 Route::resource('/teachers', TeacherController::class);
-Route::resource('/courses' ,  CourseController::class);
+// Route::resource('/courses' ,  CourseController::class);
 Route::resource('/batches' ,   BatchController::class);
 
 Auth::routes();
@@ -43,3 +44,13 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::put('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
+
+
+Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('/courses', [StudentCourseController::class, 'index'])->name('student.courses.index');
+    Route::post('/courses/enroll/{course}', [StudentCourseController::class, 'enroll'])->name('student.courses.enroll');
+});
+
+Route::delete('/student/courses/{id}/unenroll', [StudentCourseController::class, 'unenroll'])->name('student.courses.unenroll');
+Route::get('/student/courses/{id}/students', [StudentCourseController::class, 'viewEnrolledStudents'])
+    ->name('student.courses.view_students');
