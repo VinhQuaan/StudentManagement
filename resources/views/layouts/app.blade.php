@@ -33,7 +33,7 @@
                     <div class="user-pic">
                         @if (Auth::check())
                             <img class="img-responsive img-rounded" 
-                                src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('storage/app/avatars/default.png') }}" 
+                                src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('storage/app/avatars/default.jpg') }}" 
                                 alt="User picture">
                         @else
                             <img class="img-responsive img-rounded" 
@@ -120,7 +120,7 @@
 
         <!-- Content -->
         <main class="py-4">
-            <div class="container">
+            <div class="container" style="margin-left: 300px;">
                 @yield('content')
             </div>
         </main>
