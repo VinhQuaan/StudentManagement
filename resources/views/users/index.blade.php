@@ -50,8 +50,4 @@
 
 {!! $data->render() !!}
 
-<p class="text-center text-primary mt-4">
-    <small>Tutorial by ItSolutionStuff.com</small>
-</p>
-
 @endsection
