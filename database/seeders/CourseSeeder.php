@@ -11,12 +11,10 @@ class CourseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Lấy danh sách giáo viên
         $teachers = User::role('teacher')->get();
 
-        // Nếu chưa có giáo viên nào thì dừng seed
         if ($teachers->isEmpty()) {
-            $this->command->warn('⚠️ Không có teacher nào trong hệ thống. Hãy seed teacher trước.');
+            $this->command->warn('Không có teacher nào trong hệ thống. Hãy seed teacher trước.');
             return;
         }
 
@@ -30,10 +28,10 @@ class CourseSeeder extends Seeder
             Course::create([
                 'name' => $courseName,
                 'code' => 'CSE' . rand(100, 999),
-                'description' => 'Mô tả cho khóa học ' . $courseName,
+                'description' => 'Description' . $courseName,
                 'duration' => rand(4, 16),
                 'credit' => rand(2, 5),
-                'teacher_id' => $teachers->random()->id, // ⚠️ Gán teacher_id tại đây
+                'teacher_id' => $teachers->random()->id, 
             ]);
         }
     }

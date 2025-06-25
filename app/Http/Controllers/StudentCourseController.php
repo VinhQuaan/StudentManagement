@@ -9,6 +9,14 @@ use App\Models\User;
 
 class StudentCourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:student-course-list', ['only' => ['index']]);
+        $this->middleware('permission:student-course-enroll', ['only' => ['enroll']]);
+        $this->middleware('permission:student-course-unenroll', ['only' => ['unenroll']]);
+        $this->middleware('permission:student-course-view-students', ['only' => ['viewEnrolledStudents']]);
+    }
+
     public function index()
     {
         $user = Auth::user();

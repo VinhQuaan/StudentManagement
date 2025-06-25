@@ -21,6 +21,10 @@ class Course extends Model
             $q->where('name', 'student');
         });
     }
+    public function grades()
+    {
+        return $this->hasMany(\App\Models\Grade::class);
+    }
 
     use HasFactory;
 }

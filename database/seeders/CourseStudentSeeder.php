@@ -14,7 +14,12 @@ class CourseStudentSeeder extends Seeder
         $courses = Course::all();
 
         foreach ($courses as $course) {
-            $randomStudents = $students->random(rand(10, 20))->pluck('id');
+            $numberToSelect = min(rand(10, 20), $students->count());
+            if ($numberToSelect === 0) {
+                continue;
+            }
+
+            $randomStudents = $students->random($numberToSelect)->pluck('id');
             $course->students()->syncWithoutDetaching($randomStudents);
         }
     }
