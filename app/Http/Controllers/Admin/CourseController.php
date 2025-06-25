@@ -9,9 +9,19 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::with('teacher')->get();
+        $query = Course::with('teacher');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                ->orWhere('code', 'like', "%$search%");
+            });
+        }
+
+        $courses = $query->get();
         return view('admin.courses.index', compact('courses'));
     }
 

@@ -15,6 +15,19 @@
     </div>
 @endif
 
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form action="{{ route('users.index') }}" method="GET" class="form-inline">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search by name or email..." value="{{ request('search') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <table class="table table-bordered">
     <tr>
         <th>No</th>

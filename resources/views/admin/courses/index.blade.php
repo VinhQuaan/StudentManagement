@@ -10,6 +10,11 @@
 
     <a href="{{ route('admin.courses.create') }}" class="btn btn-success mb-3">Create New Course</a>
 
+    <form method="GET" action="{{ route('admin.courses.index') }}" class="form-inline mb-3">
+        <input type="text" name="search" class="form-control mr-2" placeholder="Search by name or code" value="{{ request('search') }}">
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </form>
+
     <table class="table table-bordered">
         <thead class="thead-light">
             <tr>

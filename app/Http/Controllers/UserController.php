@@ -26,12 +26,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
-        $data = User::latest()->get();
+        $search = $request->input('search');
 
-        return view('users.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $users = User::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', "%$search%")
+                            ->orWhere('email', 'like', "%$search%");
+            })
+            ->get();
+
+        return view('users.index', [
+            'data' => $users,
+            'i' => 0
+        ]);
     }
 
     /**
@@ -78,10 +87,18 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id): View
+    public function show($id)
     {
-        $user = User::find($id);
-        return view('users.show',compact('user'));
+        $user = User::findOrFail($id);
+        $courses = [];
+
+        if ($user->hasRole('Teacher')) {
+            $courses = $user->taughtCourses; 
+        } elseif ($user->hasRole('Student')) {
+            $courses = $user->enrolledCourses; 
+        }
+
+        return view('users.show', compact('user', 'courses'));
     }
 
     /**
