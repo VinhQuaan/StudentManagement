@@ -10,22 +10,24 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12 mb-3">
-        <div class="form-group">
+    {{-- Ảnh đại diện --}}
+    <div class="col-md-3 mb-3 text-center">
+        <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('images/default.jpg') }}" 
+             alt="User Avatar" class="img-thumbnail rounded-circle" style="width: 150px; height: 150px;">
+    </div>
+
+    <div class="col-md-9">
+        <div class="form-group mb-3">
             <strong>Name:</strong>
             {{ $user->name }}
         </div>
-    </div>
 
-    <div class="col-md-12 mb-3">
-        <div class="form-group">
+        <div class="form-group mb-3">
             <strong>Email:</strong>
             {{ $user->email }}
         </div>
-    </div>
 
-    <div class="col-md-12 mb-3">
-        <div class="form-group">
+        <div class="form-group mb-3">
             <strong>Roles:</strong>
             @if (!empty($user->getRoleNames()))
                 @foreach ($user->getRoleNames() as $v)
