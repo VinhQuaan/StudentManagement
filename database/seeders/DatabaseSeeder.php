@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             CreateAdminUserSeeder::class,
             CreateRandomUsersSeeder::class,
             CourseSeeder::class,
-            CourseStudentSeeder::class
+            CourseStudentSeeder::class,
+            GradeSeeder::class,
         ]);
     }
 }

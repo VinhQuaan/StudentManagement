@@ -6,7 +6,7 @@
 
     <div class="card mb-4">
         <div class="card-body text-center">
-            <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default.png') }}" 
+            <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('images/default.jpg') }}" 
                  alt="avatar"
                  class="rounded-circle" width="150">
 

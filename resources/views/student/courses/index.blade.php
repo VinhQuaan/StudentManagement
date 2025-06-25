@@ -30,15 +30,15 @@
                             <form method="POST" action="{{ route('student.courses.unenroll', $course->id) }}" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-warning">Unenroll</button>
+                                <button type="submit" class="btn btn-warning btn-sm">Unenroll</button>
                             </form>
                         @else
                             <form method="POST" action="{{ route('student.courses.enroll', $course->id) }}" style="display:inline;">
                                 @csrf
-                                <button type="submit" class="btn btn-primary">Enroll</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Enroll</button>
                             </form>
                         @endif
-                        <a href="{{ route('student.courses.view_students', $course->id) }}" class="btn btn-info btn-sm mt-2">View Students</a>
+                        <a href="{{ route('student.courses.view_students', $course->id) }}" class="btn btn-info btn-sm">View Students</a>
                     </td>
                 </tr>
             @endforeach
