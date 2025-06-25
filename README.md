@@ -112,8 +112,6 @@ A web application built with **Laravel** for managing students, courses, and gra
 
 ---
 
-## 👤 Default Roles and Login Info
-
 ### 🛡️ Admin Account (seeded)
 
 | Email               | Password   |
