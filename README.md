@@ -112,6 +112,18 @@ A web application built with **Laravel** for managing students, courses, and gra
 
 ---
 
+## 👤 Default Roles and Login Info
+
+### 🛡️ Admin Account (seeded)
+
+| Email               | Password   |
+| ------------------- | ---------- |
+| `admin@gmail.com` | `123456` |
+
+> You can log in with this account to manage roles, users, and view full system functionality.
+
+---
+
 ## 📷 Screenshots
 
 <p align="center">
